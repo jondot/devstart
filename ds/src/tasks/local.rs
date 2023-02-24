@@ -7,7 +7,7 @@ use std::path::Path;
 
 use crate::tasks::ProviderConfig;
 
-use super::{MMFile, ProviderKind, Task, TaskProvider, MMFILE};
+use super::{MMFile, ProviderKind, Task, TaskProvider, DSFILE};
 pub const TEMPLATE: &str = r#"
 tasks:
   dev: 
@@ -49,7 +49,7 @@ defaults: ~
 pub struct Local {}
 impl TaskProvider for Local {
     fn parse(&self, path: &Path) -> Result<Vec<Task>> {
-        let file = path.join(MMFILE);
+        let file = path.join(DSFILE);
         if !file.exists() {
             return Ok(vec![]);
         }
@@ -86,6 +86,6 @@ impl TaskProvider for Local {
 ///
 /// This function will return an error if IO fails
 pub fn init_local(path: &Path) -> Result<String> {
-    fs::write(path.join(MMFILE), TEMPLATE).context(crate::IOSnafu)?;
-    Ok(MMFILE.to_string())
+    fs::write(path.join(DSFILE), TEMPLATE).context(crate::IOSnafu)?;
+    Ok(DSFILE.to_string())
 }
