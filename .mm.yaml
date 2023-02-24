@@ -1,0 +1,10 @@
+
+tasks:
+  run: 
+    exec: cargo run -p ds
+    emoji: 🟢
+
+  test: 
+    exec: cargo xtask ci
+    emoji: 🚦
+

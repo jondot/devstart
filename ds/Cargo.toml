@@ -1,0 +1,63 @@
+[package]
+name = "ds"
+version = "0.1.0"
+edition = "2021"
+
+description = "Devstart: figures out how to start developing"
+authors = ["Dotan Nahum <dotan@rng0.io>"]
+documentation = "https://docs.rs/ds/"
+repository = "https://github.com/jondot/devstart"
+keywords = ["cli", "dev", "start", "test"]
+license = "Apache-2.0"
+readme = "../README.md"
+
+[package.metadata.binstall.overrides.x86_64-pc-windows-msvc]
+pkg-url = "{ repo }/releases/download/v{ version }/ds-x86_64-windows.zip"
+bin-dir = "ds-x86_64-windows/ds.exe"
+pkg-fmt = "zip"
+
+[package.metadata.binstall.overrides.x86_64-apple-darwin]
+pkg-url = "{ repo }/releases/download/v{ version }/ds-x86_64-macos.tar.xz"
+bin-dir = "ds-x86_64-macos/ds"
+pkg-fmt = "txz"
+
+[package.metadata.binstall.overrides.aarch64-apple-darwin]
+pkg-url = "{ repo }/releases/download/v{ version }/ds-aarch64-macos.tar.xz"
+bin-dir = "ds-x86_64-macos/ds"
+pkg-fmt = "txz"
+
+[package.metadata.binstall.overrides.x86_64-unknown-linux-gnu]
+pkg-url = "{ repo }/releases/download/v{ version }/ds-x86_64-linux.tar.xz"
+bin-dir = "ds-x86_64-linux/ds"
+pkg-fmt = "txz"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "ds"
+path = "src/main.rs"
+required-features = ["cli"]
+
+[features]
+cli = ["dep:eyre"]
+default = ["cli"]
+
+[dependencies]
+
+eyre = { version = "0.6.8", optional = true }
+owo-colors = "3"
+copypasta = "0.8.2"
+tabled = "0.10.0"
+requestty = "0.5.0"
+argh = "0.1.10"
+regex = "1.7.1"
+serde = "1.0.152"
+serde_derive = "1.0.152"
+serde_json = "1.0.93"
+serde_yaml = "0.9.17"
+serde_regex = "1.1.0"
+snafu = "0.7.4"
+duct = "0.13.6"
+duct_sh = "0.13.6"
+fs-err = "2.9.0"
+lazy_static = "1.4.0"
