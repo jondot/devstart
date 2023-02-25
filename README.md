@@ -1,5 +1,5 @@
 <h1 align="center">
-   <img src="media/screen.png" width="600"/>
+   <img src="media/screen.gif" width="600"/>
    <br/>
    Devstart
 </h1>
