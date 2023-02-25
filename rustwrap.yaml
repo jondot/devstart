@@ -4,13 +4,13 @@ targets:
     url_template: https://github.com/jondot/ds/releases/download/v__VERSION__/ds-x86_64-windows.zip
   - platform: linux
     arch: x64
-    url_template: https://github.com/jondot/ds/releases/download/v__VERSION__/ds-x86_64-linux.tar.xz
+    url_template: https://github.com/jondot/devstart/releases/download/v__VERSION__/ds-x86_64-linux.tar.xz
   - platform: darwin
     arch: x64
-    url_template: https://github.com/jondot/ds/releases/download/v__VERSION__/ds-x86_64-macos.tar.xz
+    url_template: https://github.com/jondot/devstart/releases/download/v__VERSION__/ds-x86_64-macos.tar.xz
   - platform: darwin
     arch: arm64
-    url_template: https://github.com/jondot/ds/releases/download/v__VERSION__/ds-aarch64-macos.tar.xz
+    url_template: https://github.com/jondot/devstart/releases/download/v__VERSION__/ds-aarch64-macos.tar.xz
 brew:
   name: ds 
   publish: true
