@@ -1,7 +1,7 @@
 
 tasks:
   run: 
-    exec: cargo run -p ds
+    exec: cargo run -p mm
     emoji: 🟢
 
   test: 

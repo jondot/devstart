@@ -4,8 +4,8 @@
 
 $ErrorActionPreference = 'Stop'
 
-$Project = "devstart"
-$Repo = "jondot/devstart"
+$Project = "makeme"
+$Repo = "jondot/makeme"
 
 if ($v) {
   $Version = "v${v}"

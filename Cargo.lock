@@ -283,29 +283,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ea835d29036a4087793836fa931b08837ad5e957da9e23886b29586fb9b6650"
 
 [[package]]
-name = "ds"
-version = "0.1.0"
-dependencies = [
- "argh",
- "copypasta",
- "duct",
- "duct_sh",
- "eyre",
- "fs-err",
- "lazy_static",
- "owo-colors",
- "regex",
- "requestty",
- "serde",
- "serde_derive",
- "serde_json",
- "serde_regex",
- "serde_yaml",
- "snafu",
- "tabled",
-]
-
-[[package]]
 name = "duct"
 version = "0.13.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -553,6 +530,29 @@ dependencies = [
  "log",
  "wasi",
  "windows-sys",
+]
+
+[[package]]
+name = "mm"
+version = "0.1.0"
+dependencies = [
+ "argh",
+ "copypasta",
+ "duct",
+ "duct_sh",
+ "eyre",
+ "fs-err",
+ "lazy_static",
+ "owo-colors",
+ "regex",
+ "requestty",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "serde_regex",
+ "serde_yaml",
+ "snafu",
+ "tabled",
 ]
 
 [[package]]

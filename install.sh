@@ -6,9 +6,9 @@
 set -e
 
 # assumes bin name same as project name
-project="devstart"
-bin_name="ds"
-repo="jondot/devstart"
+project="makeme"
+bin_name="mm"
+repo="jondot/makeme"
 
 if [ "$OS" = "Windows_NT" ]; then
 	target="x86_64-windows"

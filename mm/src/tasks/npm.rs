@@ -16,7 +16,7 @@ lazy_static! {
     pub static ref CONFIG: ProviderConfig = serde_yaml::from_str(
         r#"
 matchers:
-- task: dev
+- task: start
   expr: ^(dev|start|start:all)$
 - task: build
   expr: ^build$

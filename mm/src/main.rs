@@ -1,17 +1,19 @@
+mod argh_ext;
 use argh::FromArgs;
+
 use copypasta::ClipboardContext;
 use copypasta::ClipboardProvider;
-use ds::alias;
-use ds::exec;
-use ds::prompt;
-use ds::table;
-use ds::tasks;
 use eyre::eyre;
+use mm::alias;
+use mm::exec;
+use mm::prompt;
+use mm::table;
+use mm::tasks;
 use owo_colors::OwoColorize;
 use std::path::Path;
 use std::process::exit;
 
-/// Devstart: run dev tasks without thinking
+/// Makeme: make me run dev tasks without thinking
 #[derive(Debug, FromArgs)]
 #[allow(clippy::struct_excessive_bools)]
 struct AppArgs {
@@ -41,14 +43,14 @@ struct AppArgs {
 }
 
 fn main() -> eyre::Result<()> {
-    let args: AppArgs = argh::from_env();
+    let args: AppArgs = argh_ext::from_env();
 
     let path_s = args.path.unwrap_or_else(|| ".".to_string());
 
     let path = Path::new(&path_s);
 
     if args.init {
-        let f = ds::tasks::local::init_local(path)?;
+        let f = mm::tasks::local::init_local(path)?;
         println!("wrote {f}");
 
         exit(0);

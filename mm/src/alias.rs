@@ -33,7 +33,6 @@ lazy_static! {
         r#"
 aliases:
     s: start
-    d: dev
     b: build
     c: clean
     i: install

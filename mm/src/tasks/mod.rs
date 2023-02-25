@@ -11,7 +11,7 @@ use tabled::Tabled;
 
 use self::local::Local;
 
-const DSFILE: &str = ".devstart.yaml";
+const MMFILE: &str = ".makeme.yaml";
 const CMD_NONE: &str = "unassigned";
 
 #[derive(Clone, Debug, Deserialize, Serialize)]

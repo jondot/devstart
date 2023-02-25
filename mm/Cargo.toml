@@ -1,40 +1,40 @@
 [package]
-name = "ds"
+name = "mm"
 version = "0.1.0"
 edition = "2021"
 
-description = "Devstart: figures out how to start developing"
+description = "Make me: make me run dev tasks without thinking"
 authors = ["Dotan Nahum <dotan@rng0.io>"]
-documentation = "https://docs.rs/ds/"
-repository = "https://github.com/jondot/devstart"
+documentation = "https://docs.rs/mm/"
+repository = "https://github.com/jondot/makeme"
 keywords = ["cli", "dev", "start", "test"]
 license = "Apache-2.0"
 readme = "../README.md"
 
 [package.metadata.binstall.overrides.x86_64-pc-windows-msvc]
-pkg-url = "{ repo }/releases/download/v{ version }/ds-x86_64-windows.zip"
-bin-dir = "ds-x86_64-windows/ds.exe"
+pkg-url = "{ repo }/releases/download/v{ version }/mm-x86_64-windows.zip"
+bin-dir = "mm-x86_64-windows/mm.exe"
 pkg-fmt = "zip"
 
 [package.metadata.binstall.overrides.x86_64-apple-darwin]
-pkg-url = "{ repo }/releases/download/v{ version }/ds-x86_64-macos.tar.xz"
-bin-dir = "ds-x86_64-macos/ds"
+pkg-url = "{ repo }/releases/download/v{ version }/mm-x86_64-macos.tar.xz"
+bin-dir = "mm-x86_64-macos/mm"
 pkg-fmt = "txz"
 
 [package.metadata.binstall.overrides.aarch64-apple-darwin]
-pkg-url = "{ repo }/releases/download/v{ version }/ds-aarch64-macos.tar.xz"
-bin-dir = "ds-x86_64-macos/ds"
+pkg-url = "{ repo }/releases/download/v{ version }/mm-aarch64-macos.tar.xz"
+bin-dir = "mm-x86_64-macos/mm"
 pkg-fmt = "txz"
 
 [package.metadata.binstall.overrides.x86_64-unknown-linux-gnu]
-pkg-url = "{ repo }/releases/download/v{ version }/ds-x86_64-linux.tar.xz"
-bin-dir = "ds-x86_64-linux/ds"
+pkg-url = "{ repo }/releases/download/v{ version }/mm-x86_64-linux.tar.xz"
+bin-dir = "mm-x86_64-linux/mm"
 pkg-fmt = "txz"
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [[bin]]
-name = "ds"
+name = "mm"
 path = "src/main.rs"
 required-features = ["cli"]
 
