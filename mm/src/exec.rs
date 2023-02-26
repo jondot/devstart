@@ -1,5 +1,5 @@
 use super::Result;
-use std::path::Path;
+use std::{ffi::OsString, path::Path};
 
 use crate::tasks::Task;
 use snafu::{OptionExt, ResultExt};
@@ -34,10 +34,28 @@ fn cmd(pwd: &Path, args: &[&str]) -> Result<()> {
 }
 
 fn sh(pwd: &Path, args: &[&str]) -> Result<()> {
-    use duct_sh::sh_dangerous;
     let cmd = args
         .first()
         .with_whatever_context(|| "command is empty".to_string())?;
     sh_dangerous(cmd).dir(pwd).run().context(crate::IOSnafu)?;
     Ok(())
+}
+
+pub fn sh_dangerous<T: Into<OsString>>(command: T) -> duct::Expression {
+    let argv = shell_command_argv(command.into());
+    duct::cmd(&argv[0], &argv[1..])
+}
+
+#[cfg(unix)]
+fn shell_command_argv(command: OsString) -> Vec<OsString> {
+    use std::env;
+
+    let shell = env::var("SHELL").unwrap_or_else(|_| "/bin/sh".into());
+    vec![shell.into(), "-c".into(), command]
+}
+
+#[cfg(windows)]
+fn shell_command_argv(command: OsString) -> Vec<OsString> {
+    let comspec = std::env::var_os("COMSPEC").unwrap_or_else(|| "cmd.exe".into());
+    vec![comspec, "/C".into(), command]
 }

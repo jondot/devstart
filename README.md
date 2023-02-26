@@ -92,7 +92,20 @@ tasks:
     emoji: 🚦
 ```
 
+Use `sh: true` to invoke as a shell script. This might come handy as a one-liner. In the example below we're running a Jupyter lab instance, with all the cruft of activating environments taken care of:
 
+
+```yaml
+tasks:
+  start: 
+    exec: source ~/.zshrc && mamba activate myenv && jupyter-lab
+    emoji: 🟢
+    sh: true
+```
+
+Because there's only a single task, `mm` without any task will run it.
+
+> Note that the default shell is `$SHELL`, and if you want logon/terminal facilities available for scripting you need to source your respective `rc` file (or use a specific solution provided by your shell, e.g. `.zshenv` for `zsh`).
 ## Download
 
 For macOS:
