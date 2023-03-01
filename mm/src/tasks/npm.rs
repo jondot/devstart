@@ -33,21 +33,23 @@ defaults:
     .unwrap();
 }
 
-fn detect_prefix(path: &Path) -> String {
+/// detect and return prefix for (script runner, runner)
+fn detect_prefix(path: &Path) -> (String, String) {
     if ["pnpm-lock.yaml", "pnpm-workspace"]
         .iter()
         .any(|f| path.join(f).exists())
     {
-        "pnpm run".to_string()
+        ("pnpm run".to_string(), "pnpm".to_string())
     } else if path.join("yarn.lock").exists() {
-        "yarn".to_string()
+        ("yarn".to_string(), "yarn".to_string())
     } else {
-        "npm".to_string()
+        ("npm".to_string(), "npm".to_string())
     }
 }
 
 fn detect(
     scripts: &HashMap<String, String>,
+    script_runner: &str,
     runner: &str,
     matchers: &Option<Vec<Matcher>>,
     cfg_defaults: &[Task],
@@ -65,7 +67,7 @@ fn detect(
                             || Task {
                                 provider: ProviderKind::Npm,
                                 task: CMD_NONE.to_string(), // unassigned
-                                exec: format!("{runner} {script_name}"),
+                                exec: format!("{script_runner} {script_name}"),
                                 emoji: " ".to_string(),
                                 emoji_text: "[npm]".to_string(),
                                 ..Default::default()
@@ -73,7 +75,7 @@ fn detect(
                             |selected| Task {
                                 provider: ProviderKind::Npm,
                                 task: selected.task.clone(),
-                                exec: format!("{runner} {script_name}"),
+                                exec: format!("{script_runner} {script_name}"),
                                 details: Some(script_value.to_string()),
                                 emoji: " ".to_string(),
                                 emoji_text: "[npm]".to_string(),
@@ -115,9 +117,10 @@ impl TaskProvider for Npm {
         let scripts: PackageScripts =
             serde_json::from_reader(fs::File::open(&file).context(crate::IOSnafu)?)
                 .context(crate::SerializationJsonSnafu)?;
-        let runner = detect_prefix(path);
+        let (script_runner, runner) = detect_prefix(path);
         Ok(detect(
             &scripts.scripts,
+            &script_runner,
             &runner,
             &CONFIG.matchers,
             &CONFIG.defaults,
