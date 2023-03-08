@@ -34,6 +34,7 @@ lazy_static! {
 aliases:
     s: start
     b: build
+    br: "build:release"
     c: clean
     i: install
     t: test

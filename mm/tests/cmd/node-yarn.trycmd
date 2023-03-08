@@ -1,0 +1,11 @@
+```console
+$ mm -l
+╭────┬─────────────┬──────────────┬────────────────────────────────────────╮
+│    │ task        │ exec         │ details                                │
+├────┼─────────────┼──────────────┼────────────────────────────────────────┤
+│   │ build (b)   │ yarn build   │ yarn build:lib && yarn build:changelog │
+│   │ install (i) │ yarn install │                                        │
+│   │ test (t)    │ yarn test    │ yarn test:code && yarn test:require    │
+╰────┴─────────────┴──────────────┴────────────────────────────────────────╯
+
+```

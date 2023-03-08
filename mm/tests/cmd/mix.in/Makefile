@@ -1,0 +1,2 @@
+build:
+	cc foo.c

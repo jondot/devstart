@@ -1,0 +1,11 @@
+```console
+$ mm -l
+╭────┬─────────────┬────────────────┬────────────────────────────────────────╮
+│    │ task        │ exec           │ details                                │
+├────┼─────────────┼────────────────┼────────────────────────────────────────┤
+│   │ build (b)   │ pnpm run build │ yarn build:lib && yarn build:changelog │
+│   │ install (i) │ pnpm install   │                                        │
+│   │ test (t)    │ pnpm run test  │ yarn test:code && yarn test:require    │
+╰────┴─────────────┴────────────────┴────────────────────────────────────────╯
+
+```

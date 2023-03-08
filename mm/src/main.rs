@@ -33,6 +33,10 @@ struct AppArgs {
     #[argh(switch, short = 'c')]
     copy: bool,
 
+    /// print the command as string for customising e.g. `$ $(mm b) --release`
+    #[argh(switch, short = 's')]
+    string: bool,
+
     /// root path (default ".")
     #[argh(option, short = 'p')]
     path: Option<String>,
@@ -74,6 +78,8 @@ fn main() -> eyre::Result<()> {
                 ctx.set_contents(cmd.exec.clone())
                     .map_err(|_| eyre!("cannot set clipboard content"))?;
                 println!("copied `{}`", cmd.exec.green());
+            } else if args.string {
+                print!("{}", cmd.exec.clone());
             } else {
                 exec::run(path, cmd)?;
             }

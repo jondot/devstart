@@ -16,6 +16,11 @@ defaults:
   provider: cargo
   emoji: 🦀
   emoji_text: "[rust]"
+- task: build:release
+  exec: cargo build --release
+  provider: cargo
+  emoji: 🦀
+  emoji_text: "[rust]"
 - task: run
   exec: cargo run
   provider: cargo

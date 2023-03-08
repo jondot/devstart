@@ -59,6 +59,14 @@ Or with a task name:
 $ mm build
 ```
 
+With custom build flags:
+
+```
+$ $(mm build -s) --release
+```
+
+The `-s` flag inlines the command as a simple string.
+
 Or just `mm` to select a task to run:
 
 ```
