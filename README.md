@@ -16,6 +16,16 @@
 </p>
 
 
+## Download
+
+For macOS:
+
+```
+brew tap jondot/tap && brew install mm
+```
+
+Otherwise, grab a release from [releases](https://github.com/jondot/makeme/releases) and run `bp --help`:
+
 ## How to Use
 
 `mm` will discover tasks from:
@@ -114,16 +124,6 @@ tasks:
 Because there's only a single task, `mm` without any task will run it.
 
 > Note that the default shell is `$SHELL`, and if you want logon/terminal facilities available for scripting you need to source your respective `rc` file (or use a specific solution provided by your shell, e.g. `.zshenv` for `zsh`).
-## Download
-
-For macOS:
-
-```
-brew tap jondot/tap && brew install mm
-```
-
-Otherwise, grab a release from [releases](https://github.com/jondot/makeme/releases) and run `bp --help`:
-
 # Contributing
 
 We are accepting PRs. Feel free to [submit PRs](https://github.com/jondot/makeme/pulls).
