@@ -1,6 +1,6 @@
 use eyre::{Context, Result};
 use fs_err as fs;
-use std::{collections::HashMap, path::Path};
+use std::{collections::BTreeMap, path::Path};
 
 use serde::{Deserialize, Serialize};
 
@@ -11,8 +11,8 @@ pub struct ShortcutsConfig {
 
 #[derive(Default, Clone, Debug, Deserialize, Serialize)]
 pub struct Shortcuts {
-    pub links: Option<HashMap<String, Link>>,
-    pub folders: Option<HashMap<String, Folder>>,
+    pub links: Option<BTreeMap<String, Link>>,
+    pub folders: Option<BTreeMap<String, Folder>>,
 }
 #[derive(Default, Clone, Debug, Deserialize, Serialize)]
 pub struct Link {
