@@ -124,6 +124,48 @@ tasks:
 Because there's only a single task, `mm` without any task will run it.
 
 > Note that the default shell is `$SHELL`, and if you want logon/terminal facilities available for scripting you need to source your respective `rc` file (or use a specific solution provided by your shell, e.g. `.zshenv` for `zsh`).
+
+
+## Shortcuts
+
+You can also add custom shortcuts: links or common folders for this project:
+
+```yaml
+tasks:
+  run: 
+    exec: cargo run -p mm
+    emoji: 🟢
+
+  test: 
+    exec: cargo xtask ci
+    emoji: 🚦
+
+shortcuts: 
+  links:
+    l/actions: 
+      url: https://github.com/jondot/makeme/actions
+      title: Github Actions
+    l/repo: 
+      url: https://github.com/jondot/makeme/
+      title: Repo
+    l/issues: 
+      url: https://github.com/jondot/makeme/issues
+      title: Issues
+
+  folders:
+    f/dist: 
+      path: dist
+      title: Dist folder
+```
+
+
+To use:
+
+* `link` : `mm l/actions`
+* `folder`: use shell expansion to automatically `cd` in your current session: `$(mm f/dist)`
+
+Shortcuts are not interactively selectable, but appear in listings (`mm -l`)
+
 # Contributing
 
 We are accepting PRs. Feel free to [submit PRs](https://github.com/jondot/makeme/pulls).
