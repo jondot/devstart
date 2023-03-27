@@ -7,7 +7,8 @@ use std::path::Path;
 
 use crate::tasks::ProviderConfig;
 
-use super::{MMFile, ProviderKind, Task, TaskProvider, MMFILE};
+use super::{MMFile, ProviderKind, Task, TaskProvider};
+use crate::MMFILE;
 pub const TEMPLATE: &str = r#"
 tasks:
   dev: 

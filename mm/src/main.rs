@@ -1,15 +1,14 @@
 mod argh_ext;
 use argh::FromArgs;
 
-use copypasta::ClipboardContext;
-use copypasta::ClipboardProvider;
-use eyre::eyre;
 use mm::alias;
+use mm::clipboard;
 use mm::exec;
 use mm::prompt;
+use mm::shortcuts::ShortcutsConfig;
 use mm::table;
 use mm::tasks;
-use owo_colors::OwoColorize;
+use mm::MMFILE;
 use std::path::Path;
 use std::process::exit;
 
@@ -61,28 +60,54 @@ fn main() -> eyre::Result<()> {
     }
 
     let aliases = &alias::MAP;
-    let task = args.task.as_ref().map(|a| aliases.aton(a));
-    let resolved = tasks::discover(task.as_ref(), path, args.all)?;
+    let input = args.task.as_ref().map(|a| aliases.aton(a));
+
+    // discover tasks
+    let resolved = tasks::discover(input.as_ref(), path, args.all)?;
+
+    // discover shortcuts
+    let shortcuts = ShortcutsConfig::from_path(path.join(MMFILE).as_path())?;
 
     if args.list {
-        println!("{}", table::render(&resolved[..], aliases));
+        println!(
+            "{}",
+            table::render(&resolved[..], aliases, &shortcuts.shortcuts)
+        );
     } else {
         let task = if resolved.len() > 1 {
             prompt::choose_task(&resolved[..])
         } else {
             resolved.first()
         };
+
         if let Some(cmd) = task {
             if args.copy {
-                let mut ctx = ClipboardContext::new().map_err(|_| eyre!("cannot get clipboard"))?;
-                ctx.set_contents(cmd.exec.clone())
-                    .map_err(|_| eyre!("cannot set clipboard content"))?;
-                println!("copied `{}`", cmd.exec.green());
+                clipboard::copy(&cmd.exec)?;
             } else if args.string {
                 print!("{}", cmd.exec.clone());
             } else {
                 exec::run(path, cmd)?;
             }
+        } else if let Some(link) = shortcuts.find_link(input.as_ref()) {
+            if args.copy {
+                clipboard::copy(&link.url)?;
+            } else if args.string {
+                print!("{}", link.url);
+            } else {
+                println!("opening {}...", link.url);
+                open::that(link.url)?;
+            }
+        } else if let Some(folder) = shortcuts.find_folder(input.as_ref()) {
+            if args.copy {
+                clipboard::copy(&folder.path)?;
+            } else if args.string {
+                print!("{}", folder.path);
+            } else {
+                print!("cd {}", folder.path);
+            }
+        } else if let Some(input) = input.as_ref() {
+            // only if they gave actual input and for that input we didn't find anything
+            println!("error: `{input}` has no associated action");
         }
     }
     Ok(())

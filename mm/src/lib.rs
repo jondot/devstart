@@ -1,12 +1,16 @@
 #![allow(clippy::module_name_repetitions)]
+
 use tasks::Task;
 pub mod alias;
+pub mod clipboard;
 pub mod exec;
 pub mod prompt;
+pub mod shortcuts;
 pub mod table;
 pub mod tasks;
 
 use snafu::prelude::*;
+pub const MMFILE: &str = ".makeme.yaml";
 
 #[derive(Debug, Snafu)]
 pub enum Error {

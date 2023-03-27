@@ -61,6 +61,7 @@ duct = "0.13.6"
 duct_sh = "0.13.6"
 fs-err = "2.9.0"
 lazy_static = "1.4.0"
+open = "3"
 
 [dev-dependencies]
 trycmd = "0.14.10"
