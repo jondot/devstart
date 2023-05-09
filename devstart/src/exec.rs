@@ -17,7 +17,7 @@ pub fn run(pwd: &Path, task: &Task) -> Result<()> {
     }
 }
 
-fn cmd(pwd: &Path, args: &[&str]) -> Result<()> {
+pub fn cmd(pwd: &Path, args: &[&str]) -> Result<()> {
     let cmd = args
         .first()
         .with_whatever_context(|| "command is empty".to_string())?;
@@ -33,7 +33,7 @@ fn cmd(pwd: &Path, args: &[&str]) -> Result<()> {
     Ok(())
 }
 
-fn sh(pwd: &Path, args: &[&str]) -> Result<()> {
+pub fn sh(pwd: &Path, args: &[&str]) -> Result<()> {
     let cmd = args
         .first()
         .with_whatever_context(|| "command is empty".to_string())?;

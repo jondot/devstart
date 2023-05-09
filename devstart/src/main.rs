@@ -1,18 +1,18 @@
 mod argh_ext;
 use argh::FromArgs;
 
-use mm::alias;
-use mm::clipboard;
-use mm::exec;
-use mm::prompt;
-use mm::shortcuts::ShortcutsConfig;
-use mm::table;
-use mm::tasks;
-use mm::MMFILE;
+use devstart::alias;
+use devstart::clipboard;
+use devstart::exec;
+use devstart::prompt;
+use devstart::shortcuts::ShortcutsConfig;
+use devstart::table;
+use devstart::tasks;
+use devstart::DSFILE;
 use std::path::Path;
 use std::process::exit;
 
-/// Makeme: make me run dev tasks without thinking
+/// Devstart: run dev tasks without thinking
 #[derive(Debug, FromArgs)]
 #[allow(clippy::struct_excessive_bools)]
 struct AppArgs {
@@ -53,7 +53,7 @@ fn main() -> eyre::Result<()> {
     let path = Path::new(&path_s);
 
     if args.init {
-        let f = mm::tasks::local::init_local(path)?;
+        let f = devstart::tasks::local::init_local(path)?;
         println!("wrote {f}");
 
         exit(0);
@@ -66,7 +66,7 @@ fn main() -> eyre::Result<()> {
     let resolved = tasks::discover(input.as_ref(), path, args.all)?;
 
     // discover shortcuts
-    let shortcuts = ShortcutsConfig::from_path(path.join(MMFILE).as_path())?;
+    let shortcuts = ShortcutsConfig::from_path(path.join(DSFILE).as_path())?;
 
     if args.list {
         println!(

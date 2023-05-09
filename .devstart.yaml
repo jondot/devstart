@@ -1,6 +1,6 @@
 tasks:
   run: 
-    exec: cargo run -p mm
+    exec: cargo run -p ds
     emoji: 🟢
 
   test: 
@@ -10,13 +10,13 @@ tasks:
 shortcuts: 
   links:
     l/actions: 
-      url: https://github.com/jondot/makeme/actions
+      url: https://github.com/jondot/devstart/actions
       title: Github Actions
     l/repo: 
-      url: https://github.com/jondot/makeme/
+      url: https://github.com/jondot/devstart/
       title: Repo
     l/issues: 
-      url: https://github.com/jondot/makeme/issues
+      url: https://github.com/jondot/devstart/issues
       title: Issues
 
   folders:

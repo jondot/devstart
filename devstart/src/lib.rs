@@ -10,7 +10,7 @@ pub mod table;
 pub mod tasks;
 
 use snafu::prelude::*;
-pub const MMFILE: &str = ".makeme.yaml";
+pub const DSFILE: &str = ".devstart.yaml";
 
 #[derive(Debug, Snafu)]
 pub enum Error {

@@ -1,2 +1,2 @@
 [workspace]
-members = ["mm", "xtask"]
+members = ["devstart", "xtask"]

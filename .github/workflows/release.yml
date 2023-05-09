@@ -14,9 +14,9 @@ on:
 
 # 2. fill these in and you're done.
 env:
-  BIN_NAME: mm
-  PROJECT_NAME: makeme
-  REPO_NAME: jondot/makeme
+  BIN_NAME: ds
+  PROJECT_NAME: devstart
+  REPO_NAME: jondot/devstart
   BREW_TAP: jondot/homebrew-tap
 
 jobs:

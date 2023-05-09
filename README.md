@@ -1,12 +1,12 @@
 <h1 align="center">
    <img src="media/screen.png" width="600"/>
    <br/>
-   Make me
+    Devstart
 </h1>
 
-<h4 align="center"> Make me: make me run dev tasks without thinking</h4>
+<h4 align="center"> Devstart: run dev tasks without thinking</h4>
 <p align="center">
-<img src="https://github.com/jondot/makeme/actions/workflows/build.yml/badge.svg"/>
+<img src="https://github.com/jondot/devstart/actions/workflows/build.yml/badge.svg"/>
 </p>
 <p align="center">
   <a href="#how-to-use">How To Use</a> •
@@ -21,31 +21,31 @@
 For macOS:
 
 ```
-brew tap jondot/tap && brew install mm
+brew tap jondot/tap && brew install devstart
 ```
 
-Otherwise, grab a release from [releases](https://github.com/jondot/makeme/releases) and run `bp --help`:
+Otherwise, grab a release from [releases](https://github.com/jondot/devstart/releases) and run `bp --help`:
 
 ## How to Use
 
-`mm` will discover tasks from:
+`ds` will discover tasks from:
 
 * `Cargo` (predefined)
 * `node` (package.json)
 * `make` (Makefile)
-* Feel free to [submit a PR to add](https://github.com/jondot/makeme/pulls) your favorite one
+* Feel free to [submit a PR to add](https://github.com/jondot/devstart/pulls) your favorite one
 
 Listing tasks from all package managers (currently showing Cargo) assigned as common tasks (build, test, clean, etc.):
 
 ```
-$ mm -l
+$ ds -l
 ╭────┬───────────┬─────────────────┬─────────╮
 │    │ task      │ exec            │ details │
 ├────┼───────────┼─────────────────┼─────────┤
 │ 🦀 │ build (b) │ cargo build     │         │
 │ 🦀 │ clean (c) │ cargo clean     │         │
 │ 🦀 │ lint (l)  │ cargo clippy    │         │
-│ 🟢 │ run (r)   │ cargo run -p mm │         │
+│ 🟢 │ run (r)   │ cargo run -p ds │         │
 │ 🚦 │ test (t)  │ cargo xtask ci  │         │
 ╰────┴───────────┴─────────────────┴─────────╯
 ```
@@ -53,39 +53,39 @@ $ mm -l
 You can use `-a` to show _all_ tasks, even those tasks which aren't common:
 
 ```
-$ mm -l -a
+$ ds -l -a
 < list of all discovered tasks >
 ```
 
 Run a task using an _alias_ (`b` for `build`)
 
 ```
-$ mm b
+$ ds b
 ```
 
 Or with a task name:
 
 ```
-$ mm build
+$ ds build
 ```
 
 With custom build flags:
 
 ```
-$ $(mm build -s) --release
+$ $(ds build -s) --release
 ```
 
 The `-s` flag inlines the command as a simple string.
 
-Or just `mm` to select a task to run:
+Or just `ds` to select a task to run:
 
 ```
-$ mm
+$ ds
 ? Select task ›
 ❯ 🦀  [build] cargo build
   🦀  [clean] cargo clean
   🦀  [lint] cargo clippy
-  🟢  [run] cargo run -p mm
+  🟢  [run] cargo run -p ds
   🚦  [test] cargo xtask ci
 ```
 
@@ -93,16 +93,16 @@ You can override and configure your own local tasks which will _overlay_ on top 
 
 
 ```
-$ mm --init
-wrote .makeme.yaml
+$ ds --init
+wrote .devstart.yaml
 ```
 
-Edit `.makeme.yaml`:
+Edit `.devstart.yaml`:
 
 ```yaml
 tasks:
   run: 
-    exec: cargo run -p mm
+    exec: cargo run -p ds
     emoji: 🟢
 
   test: 
@@ -121,7 +121,7 @@ tasks:
     sh: true
 ```
 
-Because there's only a single task, `mm` without any task will run it.
+Because there's only a single task, `ds` without any task will run it.
 
 > Note that the default shell is `$SHELL`, and if you want logon/terminal facilities available for scripting you need to source your respective `rc` file (or use a specific solution provided by your shell, e.g. `.zshenv` for `zsh`).
 
@@ -133,7 +133,7 @@ You can also add custom shortcuts: links or common folders for this project:
 ```yaml
 tasks:
   run: 
-    exec: cargo run -p mm
+    exec: cargo run -p ds
     emoji: 🟢
 
   test: 
@@ -143,13 +143,13 @@ tasks:
 shortcuts: 
   links:
     l/actions: 
-      url: https://github.com/jondot/makeme/actions
+      url: https://github.com/jondot/devstart/actions
       title: Github Actions
     l/repo: 
-      url: https://github.com/jondot/makeme/
+      url: https://github.com/jondot/devstart/
       title: Repo
     l/issues: 
-      url: https://github.com/jondot/makeme/issues
+      url: https://github.com/jondot/devstart/issues
       title: Issues
 
   folders:
@@ -161,16 +161,16 @@ shortcuts:
 
 To use:
 
-* `link` : `mm l/actions`
-* `folder`: use shell expansion to automatically `cd` in your current session: `$(mm f/dist)`
+* `link` : `ds l/actions`
+* `folder`: use shell expansion to automatically `cd` in your current session: `$(ds f/dist)`
 
-Shortcuts are not interactively selectable, but appear in listings (`mm -l`)
+Shortcuts are not interactively selectable, but appear in listings (`ds -l`)
 
 # Contributing
 
-We are accepting PRs. Feel free to [submit PRs](https://github.com/jondot/makeme/pulls).
+We are accepting PRs. Feel free to [submit PRs](https://github.com/jondot/devstart/pulls).
 
-To all [Contributors](https://github.com/jondot/makeme/graphs/contributors) - you make this happen, thanks!
+To all [Contributors](https://github.com/jondot/devstart/graphs/contributors) - you make this happen, thanks!
 
 # License
 

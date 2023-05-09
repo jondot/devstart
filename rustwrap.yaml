@@ -1,32 +1,32 @@
-repo: jondot/makeme
+repo: jondot/devstart
 targets:
   - platform: win32
     arch: x64
-    url_template: https://github.com/jondot/makeme/releases/download/v__VERSION__/makeme-x86_64-windows.zip
+    url_template: https://github.com/jondot/devstart/releases/download/v__VERSION__/devstart-x86_64-windows.zip
   - platform: linux
     arch: x64
-    url_template: https://github.com/jondot/makeme/releases/download/v__VERSION__/makeme-x86_64-linux.tar.xz
+    url_template: https://github.com/jondot/devstart/releases/download/v__VERSION__/devstart-x86_64-linux.tar.xz
   - platform: darwin
     arch: x64
-    url_template: https://github.com/jondot/makeme/releases/download/v__VERSION__/makeme-x86_64-macos.tar.xz
+    url_template: https://github.com/jondot/devstart/releases/download/v__VERSION__/devstart-x86_64-macos.tar.xz
   - platform: darwin
     arch: arm64
-    url_template: https://github.com/jondot/makeme/releases/download/v__VERSION__/makeme-aarch64-macos.tar.xz
+    url_template: https://github.com/jondot/devstart/releases/download/v__VERSION__/devstart-aarch64-macos.tar.xz
 brew:
-  name: mm 
+  name: devstart 
   publish: true
   tap: jondot/homebrew-tap
-  recipe_fname: mm.rb
+  recipe_fname: devstart.rb
   recipe_template: |
-    class Mm < Formula
-      desc "mm - makeme: figures out how to start developing"
-      homepage "http://github.com/jondot/makeme"
+    class Devstart < Formula
+      desc "ds - devstart: figures out how to start developing"
+      homepage "http://github.com/jondot/devstart"
       url "__URL__"
       version "__VERSION__"
       sha256 "__SHA__"
 
       def install
-        bin.install "mm"
+        bin.install "ds"
       end
     end
 

@@ -14,7 +14,7 @@ use self::local::Local;
 const CMD_NONE: &str = "unassigned";
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct MMFile {
+pub struct DSFile {
     pub tasks: HashMap<String, Task>,
 }
 

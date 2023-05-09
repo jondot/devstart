@@ -1,40 +1,40 @@
 [package]
-name = "mm"
-version = "0.5.1"
+name = "devstart"
+version = "0.6.0"
 edition = "2021"
 
 description = "Make me: make me run dev tasks without thinking"
 authors = ["Dotan Nahum <dotan@rng0.io>"]
-documentation = "https://docs.rs/mm/"
-repository = "https://github.com/jondot/makeme"
+documentation = "https://docs.rs/devstart/"
+repository = "https://github.com/jondot/devstart"
 keywords = ["cli", "dev", "start", "test"]
 license = "Apache-2.0"
 readme = "../README.md"
 
 [package.metadata.binstall.overrides.x86_64-pc-windows-msvc]
-pkg-url = "{ repo }/releases/download/v{ version }/mm-x86_64-windows.zip"
-bin-dir = "mm-x86_64-windows/mm.exe"
+pkg-url = "{ repo }/releases/download/v{ version }/devstart-x86_64-windows.zip"
+bin-dir = "devstart-x86_64-windows/ds.exe"
 pkg-fmt = "zip"
 
 [package.metadata.binstall.overrides.x86_64-apple-darwin]
-pkg-url = "{ repo }/releases/download/v{ version }/mm-x86_64-macos.tar.xz"
-bin-dir = "mm-x86_64-macos/mm"
+pkg-url = "{ repo }/releases/download/v{ version }/devstart-x86_64-macos.tar.xz"
+bin-dir = "devstart-x86_64-macos/ds"
 pkg-fmt = "txz"
 
 [package.metadata.binstall.overrides.aarch64-apple-darwin]
-pkg-url = "{ repo }/releases/download/v{ version }/mm-aarch64-macos.tar.xz"
-bin-dir = "mm-x86_64-macos/mm"
+pkg-url = "{ repo }/releases/download/v{ version }/devstart-aarch64-macos.tar.xz"
+bin-dir = "devstart-x86_64-macos/ds"
 pkg-fmt = "txz"
 
 [package.metadata.binstall.overrides.x86_64-unknown-linux-gnu]
-pkg-url = "{ repo }/releases/download/v{ version }/mm-x86_64-linux.tar.xz"
-bin-dir = "mm-x86_64-linux/mm"
+pkg-url = "{ repo }/releases/download/v{ version }/devstart-x86_64-linux.tar.xz"
+bin-dir = "devstart-x86_64-linux/ds"
 pkg-fmt = "txz"
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [[bin]]
-name = "mm"
+name = "ds"
 path = "src/main.rs"
 required-features = ["cli"]
 
@@ -52,16 +52,18 @@ requestty = "0.5.0"
 argh = "0.1.10"
 regex = "1.7.1"
 serde = "1.0.152"
-serde_derive = "1.0.152"
-serde_json = "1.0.93"
-serde_yaml = "0.9.17"
+serde_derive = "1.0.160"
+serde_json = "1.0.96"
+serde_yaml = "0.9.21"
 serde_regex = "1.1.0"
 snafu = "0.7.4"
 duct = "0.13.6"
 duct_sh = "0.13.6"
 fs-err = "2.9.0"
 lazy_static = "1.4.0"
-open = "3"
+open = "4.1.0"
 
 [dev-dependencies]
+pretty_assertions = "1"
 trycmd = "0.14.10"
+insta = { version = "^1.29.0" }

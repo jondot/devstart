@@ -7,5 +7,5 @@ edition = "2021"
 
 [dependencies]
 
-xtaskops = "^0.4.1"
+xtaskops = "0.4.2"
 anyhow = "1"
